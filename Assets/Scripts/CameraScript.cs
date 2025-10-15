@@ -28,6 +28,11 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null) //doing this just so I don't have to deal with error messages for now
+        {
+            return;
+        }
+
         Vector3 vTargetOffset; //store vertical target offset amount (x,y,z)
 
         if(Input.GetKeyDown(KeyCode.P))

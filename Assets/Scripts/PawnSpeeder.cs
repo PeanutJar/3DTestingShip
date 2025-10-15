@@ -10,6 +10,7 @@ public class PawnSpeeder : Pawn
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gameObject.tag = "Player";
     }
 
     // Update is called once per frame
