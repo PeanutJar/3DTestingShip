@@ -3,7 +3,7 @@ using UnityEngine;
 public class ControllerPlayer : Controller
 {
     public Pawn pawnobject;
-    private Vector3 moveDirection = Vector3.forward;
+    //private Vector3 moveDirection = Vector3.forward;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,11 +20,35 @@ public class ControllerPlayer : Controller
 
         if (Input.GetKey(KeyCode.W))
         {
-            pawnobject.Move(moveDirection);
+            pawnobject.Move(pawnobject.transform.forward);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            pawnobject.Move(-moveDirection);
+            pawnobject.Move(-pawnobject.transform.forward);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            pawnobject.Rotate(new Vector3(0,-1,0));
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            pawnobject.Rotate(new Vector3(0, 1, 0));
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            pawnobject.Rotate(new Vector3(-1, 0, 0));
+        }
+        else if (Input.GetKey(KeyCode.X))
+        {
+            pawnobject.Rotate(new Vector3(1, 0, 0));
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            pawnobject.Rotate(new Vector3(0, 0, 1));
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            pawnobject.Rotate(new Vector3(0, 0, -1));
         }
     }
 }

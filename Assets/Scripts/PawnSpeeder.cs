@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PawnSpeeder : Pawn
 {
     public float speed;
     public float rotatespeed;
+    private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -18,11 +20,15 @@ public class PawnSpeeder : Pawn
 
     public override void Move(Vector3 movevector)
     {
-        transform.position += (movevector * speed) * Time.deltaTime;
-    }
+        //transform.position += (movevector * speed) * Time.deltaTime;
+        // rb.AddForce ((movevector * speed) * 50 * Time.deltaTime);
+        rb.AddForce((movevector * speed), ForceMode.Force); //fyi don't use Time.deltatime on an addforce unless within a fiexupdate function
 
+
+    }
     public override void Rotate(Vector3 angle)
     {
         transform.Rotate((angle * rotatespeed) * Time.deltaTime);
+
     }
 }

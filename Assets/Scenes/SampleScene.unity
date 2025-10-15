@@ -312,6 +312,8 @@ MonoBehaviour:
   minimumY: -60
   maximumY: 20
   lookmultiplier: 8
+  lockedlookdirection: {x: 0, y: 0, z: 1}
+  Offset: {x: 0, y: 4, z: 0}
 --- !u!1 &334109447
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +343,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -50, z: 50}
-  m_LocalScale: {x: 100, y: 0.1, z: 100}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 66938288}
@@ -452,7 +454,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 50, y: 0, z: 50}
-  m_LocalScale: {x: 100, y: 0.10000001, z: 100}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 66938288}
@@ -720,6 +722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1032600882}
   - component: {fileID: 1032600881}
+  - component: {fileID: 1032600883}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -755,6 +758,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1032600883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032600880}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1198864751
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +808,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 0.1, z: 100}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 66938288}
@@ -883,8 +907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8fb3282e3e460940954bbcdfae37b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PawnSpeeder
-  speed: 8
-  rotatespeed: 360
+  speed: 3
+  rotatespeed: 60
 --- !u!4 &1362930985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4098156736303723556, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
@@ -941,7 +965,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -50, y: 0, z: 50}
-  m_LocalScale: {x: 100, y: 0.10000001, z: 100}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 66938288}
@@ -1052,7 +1076,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 100, y: 0.1, z: 100}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 66938288}
@@ -1142,6 +1166,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2352517628125644318, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352517628125644318, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352517628125644318, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352517628125644318, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
+      propertyPath: m_ImplicitCom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352517628125644318, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
+      propertyPath: m_LinearDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352517628125644318, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
+      propertyPath: m_AngularDamping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3716669784556940958, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
       propertyPath: m_Name
       value: playercraft
@@ -1152,7 +1200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4098156736303723556, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4098156736303723556, guid: 8c0c7ba0048fe0b46af6c75f88706d32, type: 3}
       propertyPath: m_LocalPosition.z
