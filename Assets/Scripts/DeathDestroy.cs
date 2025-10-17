@@ -21,8 +21,8 @@ public class DeathDestroy : Death
         {
             if (gameObject.GetComponent<UFOScript>().healthcomponent.GetHealth() <= 0) //prevents score being added unless player actualy shoots them down
             {
-                //Camera.main.GetComponent<GneralScript>().score += gameObject.GetComponent<Obstacle>().scoreincreaser;
-                //Camera.main.GetComponent<GneralScript>().scoretext.text = "Score: " + Camera.main.GetComponent<GneralScript>().score;
+                GameObject.Find("GameManager").GetComponent<GeneralScript>().score += gameObject.GetComponent<UFOScript>().scoreincreaser;
+                GameObject.Find("GameManager").GetComponent<GeneralScript>().scoretext.text = "Score: " + GameObject.Find("GameManager").GetComponent<GeneralScript>().score;
                 //if (gameObject.GetComponent<MeteorScript>() != null)
                 {
                     //gameObject.GetComponent<MeteorScript>().SpawnDeathRocks();

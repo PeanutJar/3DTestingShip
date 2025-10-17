@@ -1,8 +1,10 @@
 using NUnit.Framework.Internal;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 using static UnityEditor.PlayerSettings;
 
 public class GeneralScript : MonoBehaviour
@@ -27,7 +29,9 @@ public class GeneralScript : MonoBehaviour
 
     [Header("Misc")]
     public int score;
-    public int highscore;
+    private int highscore;
+    public TextMeshProUGUI scoretext;
+    public TextMeshProUGUI highscoretext;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
@@ -60,6 +64,7 @@ public class GeneralScript : MonoBehaviour
         SpawnPlayer();
         Camera.main.GetComponent<CameraScript>().target = playerobj.pawnobject.gameObject.transform;
         score = 0;
+        scoretext.text = "Score: " + score;
     }
 
     // Update is called once per frame
@@ -76,6 +81,14 @@ public class GeneralScript : MonoBehaviour
                 //wintext.gameObject.SetActive(false);
                 //GetComponent<AudioSource>().Stop();
                 menulayer.SetActive(true);
+            }
+            if (!menulayer.activeSelf && !creditslayer.activeSelf && !gameoverlayer.activeSelf && gamelayer.activeSelf) //game only runs if in "game mode" 
+            {
+                if(score >= highscore)
+                {
+                    highscore = score;
+                    highscoretext.text = "HighScore: " + score;
+                }
             }
         }
         else if(Input.anyKeyDown)
