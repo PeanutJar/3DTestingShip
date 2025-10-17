@@ -23,18 +23,14 @@ public class DeathDestroy : Death
             {
                 GameObject.Find("GameManager").GetComponent<GeneralScript>().score += gameObject.GetComponent<UFOScript>().scoreincreaser;
                 GameObject.Find("GameManager").GetComponent<GeneralScript>().scoretext.text = "Score: " + GameObject.Find("GameManager").GetComponent<GeneralScript>().score;
-                //if (gameObject.GetComponent<MeteorScript>() != null)
-                {
-                    //gameObject.GetComponent<MeteorScript>().SpawnDeathRocks();
-                }
-                //Camera.main.GetComponent<GneralScript>().haswon = Camera.main.GetComponent<GneralScript>().GameEnd();
-                //Camera.main.GetComponent<GneralScript>().enemyspawnlist.Remove(gameObject);
+                GameObject.Find("GameManager").GetComponent<GeneralScript>().numenemies -= 1;
+                GameObject.Find("GameManager").GetComponent<GeneralScript>().haswon = GameObject.Find("GameManager").GetComponent<GeneralScript>().GameEnd();
                 Destroy(gameObject.GetComponent<UFOScript>().getParent().gameObject);
             }
         }
         else if(gameObject.tag == "Player")
         {
-            //Camera.main.GetComponent<GneralScript>().GameEnd(false);
+            GameObject.Find("GameManager").GetComponent<GeneralScript>().GameEnd(false);
         }
         Destroy(gameObject);
     }

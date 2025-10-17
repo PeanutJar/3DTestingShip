@@ -32,6 +32,10 @@ public class GeneralScript : MonoBehaviour
     private int highscore;
     public TextMeshProUGUI scoretext;
     public TextMeshProUGUI highscoretext;
+    public TextMeshProUGUI losetext;
+    public TextMeshProUGUI wintext;
+    public bool haswon;
+    public int numenemies;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
@@ -39,8 +43,8 @@ public class GeneralScript : MonoBehaviour
         gamelayer.SetActive(false);
         creditslayer.SetActive(false);
         gameoverlayer.SetActive(false);
-        //losetext.gameObject.SetActive(false);
-        //wintext.gameObject.SetActive(false);
+        losetext.gameObject.SetActive(false);
+        wintext.gameObject.SetActive(false);
         menulayer.SetActive(false);
         startlayer.SetActive(true);
     }
@@ -65,6 +69,8 @@ public class GeneralScript : MonoBehaviour
         Camera.main.GetComponent<CameraScript>().target = playerobj.pawnobject.gameObject.transform;
         score = 0;
         scoretext.text = "Score: " + score;
+        haswon = false;
+        numenemies = 0;
     }
 
     // Update is called once per frame
@@ -77,9 +83,8 @@ public class GeneralScript : MonoBehaviour
                 gamelayer.SetActive(false);
                 creditslayer.SetActive(false);
                 gameoverlayer.SetActive(false);
-                //losetext.gameObject.SetActive(false);
-                //wintext.gameObject.SetActive(false);
-                //GetComponent<AudioSource>().Stop();
+                losetext.gameObject.SetActive(false);
+                wintext.gameObject.SetActive(false);
                 menulayer.SetActive(true);
             }
             if (!menulayer.activeSelf && !creditslayer.activeSelf && !gameoverlayer.activeSelf && gamelayer.activeSelf) //game only runs if in "game mode" 
@@ -88,6 +93,10 @@ public class GeneralScript : MonoBehaviour
                 {
                     highscore = score;
                     highscoretext.text = "HighScore: " + score;
+                }
+                if (haswon)
+                {
+                    GameEnd(true);
                 }
             }
         }
@@ -151,11 +160,32 @@ public class GeneralScript : MonoBehaviour
 
                 Vector3 pos = playerobj.pawnobject.gameObject.transform.position;
                 newcontroller.GetComponent<AiController>().setDirection(pos);
+                numenemies += 1;
             }
+        }   
+    }
+
+    public void GameEnd(bool iswin)
+    {
+        gameoverlayer.SetActive(true);
+        if (!iswin)
+        {
+            losetext.gameObject.SetActive(true);
         }
+        else
+        {
+            wintext.gameObject.SetActive(true);
+        }
+        gamelayer.SetActive(false);
+    }
 
-        
-
+    public bool GameEnd() //if player can win
+    {
+        if (numenemies == 0)
+        {         
+            return true;          
+        }
+        return false;
     }
 
 }
