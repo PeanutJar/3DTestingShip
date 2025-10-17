@@ -10,6 +10,11 @@ public class ControllerPlayer : Controller
         
     }
 
+    public void IstantiatePawnPlayerConnection()
+    {
+        pawnobject.GetComponentInChildren<PawnSpeeder>().IstantiatePawnPlayerConnection(this);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -49,6 +54,12 @@ public class ControllerPlayer : Controller
         else if (Input.GetKey(KeyCode.E))
         {
             pawnobject.Rotate(new Vector3(0, 0, -1));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //pawnobject.gameObject.GetComponent<AudioPlayer>().PlayAudio(pawnobject.gameObject.GetComponent<PawnSpaceShip>().getAudio("firingsound"), 0.7f);
+            pawnobject.GetComponent<Shooter>().Shoot();
         }
     }
 }

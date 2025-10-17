@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
+    [SerializeField] private GameObject gamemanager;
     public Transform target; //target for camera to look at
     public float distance; // distance between target and camera
     public float sensitivityX;
@@ -20,6 +21,7 @@ public class CameraScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        target = gamemanager.GetComponent<GeneralScript>().playerobj.pawnobject.gameObject.transform;
         rotationX = 0f;
         rotationY = 0f;
         freelook = false;
