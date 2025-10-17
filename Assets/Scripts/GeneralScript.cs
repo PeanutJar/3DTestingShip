@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 public class GeneralScript : MonoBehaviour
 {
