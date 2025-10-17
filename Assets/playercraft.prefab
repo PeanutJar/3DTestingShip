@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PawnSpeeder
   healthcomponent: {fileID: 0}
-  speed: 10
+  speed: 20
   rotatespeed: 60
   impactsound: {fileID: 8300000, guid: e8b3ff9235edf8b40adfd741153b5362, type: 3}
   firingsound: {fileID: 8300000, guid: ac7995b9388c632469561be1281bc20a, type: 3}
