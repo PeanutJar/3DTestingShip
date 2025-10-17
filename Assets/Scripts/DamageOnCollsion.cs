@@ -22,7 +22,8 @@ public class DamageOnCollsion : MonoBehaviour
         {
             if (collision.gameObject != null && collision.gameObject.tag == "Boundry")
             {
-                gameObject.GetComponent<DeathDestroy>().Die();
+                gameObject.GetComponent<Health>().TakeDamage(gameObject.GetComponent<Health>().GetMaxHealth());
+                //gameObject.GetComponent<DeathDestroy>().Die();
             }
         }
         else if (gameObject.tag == "Obstacle") //all collision triggers conditions relating to obstacles

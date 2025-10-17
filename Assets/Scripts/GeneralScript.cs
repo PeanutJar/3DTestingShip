@@ -123,7 +123,7 @@ public class GeneralScript : MonoBehaviour
             Destroy(playerobj.pawnobject.gameObject);
         }
 
-        GameObject _pawn = Instantiate(playerpawnprefab, new Vector3(0, 10, 0), Quaternion.identity, gamelayer.transform) as GameObject;
+        GameObject _pawn = Instantiate(playerpawnprefab, new Vector3(0, 20, 0), Quaternion.identity, gamelayer.transform) as GameObject;
         if (_pawn != null)
         {
             Pawn newpawn = _pawn.GetComponent<Pawn>();

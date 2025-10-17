@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
                 }
                 else
                 {
-                    gameObject.transform.position = new Vector3(0, 10, 0);
+                    gameObject.transform.position = new Vector3(0, 20, 0);
                     ResetHealthBar(gameObject.GetComponent<PawnSpeeder>().gethealthbar(),gameObject.GetComponent<PawnSpeeder>().returnHealthScale());
                 }
             }
