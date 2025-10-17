@@ -7,13 +7,20 @@ public class LevelManagerScript : MonoBehaviour
     public GameObject gamemanager;
     public float heightlimit;
     public List<GameObject> spawners;
-    private bool hasspawn = false;
+    private bool hasspawn;
     private int numspawners;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //spawners = new List<GameObject>();
         numspawners = 0;
+
+        Reset();
+    }
+
+    public void Reset()
+    {
+        hasspawn = false;
         if (spawners.Count > 0)
         {
             for (int i = 0; i < spawners.Count; i++)
@@ -24,7 +31,8 @@ public class LevelManagerScript : MonoBehaviour
         if (spawners.Count > 0)
         {
             //numspawners = Random.Range(1, spawners.Count); //1-list count
-            for(int i = 0; i < spawners.Count; i++) {
+            for (int i = 0; i < spawners.Count; i++)
+            {
                 numspawners = Random.Range(1, 3); //305 chance for given spawner to be active
                 if (numspawners == 1)
                 {
@@ -32,7 +40,6 @@ public class LevelManagerScript : MonoBehaviour
                 }
             }
         }
-        
     }
 
     // Update is called once per frame

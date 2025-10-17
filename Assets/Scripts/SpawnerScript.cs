@@ -17,7 +17,7 @@ public class SpawnerScript : MonoBehaviour
         {
             if (spawnprefab == gamemanager.GetComponent<GeneralScript>().ufopawnprefab)
             {
-                gamemanager.GetComponent<GeneralScript>().SpawnUFO();
+                gamemanager.GetComponent<GeneralScript>().SpawnUFO(transform.position);
             }
             else
             {

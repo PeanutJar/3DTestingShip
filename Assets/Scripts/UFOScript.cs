@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using System.Reflection;
 using System.Linq;
+using System.Collections.Generic;
 
 public class UFOScript : Pawn
 {
@@ -19,8 +20,8 @@ public class UFOScript : Pawn
     public float speed;
     public float rotatespeed;
 
-    //[Header("AudioClips")]
-    //public AudioClip collisionsound;
+    [Header("AudioClips")]
+    public AudioClip collisionsound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -72,4 +73,24 @@ public class UFOScript : Pawn
         return (defaulthealthbarscale);
     }
     */
+
+    public override AudioClip getAudio(string audiovariablename) //uses "Reflection" technique
+    {
+        AudioClip localaudio;
+        Type targettype = this.GetType();
+        FieldInfo[] fields = targettype.GetFields(BindingFlags.Public | BindingFlags.Instance); //create an array of all public AudioClip within this instance of the script
+        // This example gets public instance fields. Adjust BindingFlags as needed.
+        foreach (FieldInfo field in fields)
+        {
+            if (field.Name == audiovariablename && field.FieldType == typeof(AudioClip))
+            {
+                AudioClip fieldValue = (AudioClip)field.GetValue(this); // 'this' is the instance
+                localaudio = fieldValue;
+                return (localaudio);
+            }
+        }
+
+
+        return collisionsound;
+    }
 }

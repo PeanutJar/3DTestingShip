@@ -2,13 +2,18 @@ using NUnit.Framework.Internal;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.SocialPlatforms.Impl;
 using static UnityEditor.PlayerSettings;
 
 public class GeneralScript : MonoBehaviour
 {
-
     [Header("GameLayers")]
     public GameObject gamelayer;
+    public GameObject menulayer;
+    public GameObject creditslayer;
+    public GameObject gameoverlayer;
+    public GameObject startlayer;
+    [SerializeField] private Canvas gamecanvas;
 
     [Header("Players")]
     public ControllerPlayer playerobj;
@@ -20,34 +25,64 @@ public class GeneralScript : MonoBehaviour
     public GameObject ufopawnprefab;
     public GameObject aicontrollerprefab;
 
-    //[Header("Misc")]
-    //private float timecount;
+    [Header("Misc")]
+    public int score;
+    public int highscore;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private void Awake()
+    {
+        gamelayer.SetActive(false);
+        creditslayer.SetActive(false);
+        gameoverlayer.SetActive(false);
+        //losetext.gameObject.SetActive(false);
+        //wintext.gameObject.SetActive(false);
+        menulayer.SetActive(false);
+        startlayer.SetActive(true);
+    }
     void Start()
     {
         playerobj = null;
+        highscore = 0;
         Reset();
     }
 
     public void Reset()
     {
-
         foreach (Transform gameobj in gamelayer.transform) //destoryed gameobjects in the gamelayer that aren't the canvas elements (UI)
         {
-            //if (gameobj.gameObject != gamecanvas.gameObject)
+            if (gameobj.gameObject != gamecanvas.gameObject)
             {
                 Destroy(gameobj.gameObject);
             }
         }
         SpawnPlayerController();
         SpawnPlayer();
-        //timecount = 0;
+        Camera.main.GetComponent<CameraScript>().target = playerobj.pawnobject.gameObject.transform;
+        score = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!startlayer.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                gamelayer.SetActive(false);
+                creditslayer.SetActive(false);
+                gameoverlayer.SetActive(false);
+                //losetext.gameObject.SetActive(false);
+                //wintext.gameObject.SetActive(false);
+                //GetComponent<AudioSource>().Stop();
+                menulayer.SetActive(true);
+            }
+        }
+        else if(Input.anyKeyDown)
+        {
+            startlayer.SetActive(false);
+            menulayer.SetActive(true);
+        }
     }
 
     public void SpawnPlayer()
@@ -86,13 +121,13 @@ public class GeneralScript : MonoBehaviour
         }
     }
 
-    public void SpawnUFO()
+    public void SpawnUFO(Vector3 _pos)
     {
         if (playerobj != null || playerobj.pawnobject != null)
         {
             GameObject controller = Instantiate(aicontrollerprefab, new Vector3(0, 0, 0), Quaternion.identity, gamelayer.transform) as GameObject; //spawns top left from character
 
-            GameObject obstacle = Instantiate(ufopawnprefab, new Vector3(10, 10, 10), Quaternion.identity, controller.transform) as GameObject; //spawns top left from character
+            GameObject obstacle = Instantiate(ufopawnprefab, _pos, Quaternion.identity, controller.transform) as GameObject; //spawns top left from character
 
             AiController newcontroller = controller.GetComponent<AiController>();
             Pawn newpawn = obstacle.GetComponent<Pawn>();

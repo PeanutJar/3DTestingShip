@@ -21,7 +21,7 @@ public class CameraScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        target = gamemanager.GetComponent<GeneralScript>().playerobj.pawnobject.gameObject.transform;
+        //target = gamemanager.GetComponent<GeneralScript>().playerobj.pawnobject.gameObject.transform;
         rotationX = 0f;
         rotationY = 0f;
         freelook = false;
@@ -54,7 +54,7 @@ public class CameraScript : MonoBehaviour
         {
             rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX * Time.deltaTime * lookmultiplier;
             rotationY += Input.GetAxis("Mouse Y") * sensitivityY * Time.deltaTime * lookmultiplier;
-            rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+            //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
             Quaternion rotation = Quaternion.Euler(-rotationY, rotationX, 0); //set rotation value to equal the rotation of the camera and time
 
             vTargetOffset = new Vector3(0, -target.GetComponent<Collider>().bounds.size.y - 1f, 0); //calculate desired camera position (bounds.size.y is the target's collider height)

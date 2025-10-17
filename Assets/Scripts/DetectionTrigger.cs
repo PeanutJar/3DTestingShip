@@ -21,11 +21,13 @@ public class DetectionTrigger : MonoBehaviour
             if (other.gameObject != null && other.gameObject.tag == "HealthPack")
             {
                 gameObject.GetComponent<Health>().Heal(other.gameObject.GetComponent<HealthPackScript>().healnum);
+                other.gameObject.GetComponent<AudioPlayer>().PlayAudio(other.gameObject.GetComponent<HealthPackScript>().getAudio("pickupsound"), 1f);
                 Destroy(other.gameObject);
             }
             else if (other.gameObject != null && other.gameObject.tag == "Astronaut")
             {
                 //increase score thing
+                other.gameObject.GetComponent<AudioPlayer>().PlayAudio(other.gameObject.GetComponent<AstronautScript>().getAudio("pickupsound"), 1f);
                 Destroy(other.gameObject);
             }
         }

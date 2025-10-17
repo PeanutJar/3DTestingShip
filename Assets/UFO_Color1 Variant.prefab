@@ -164,6 +164,7 @@ MonoBehaviour:
   scoreincreaser: 4
   speed: 5
   rotatespeed: 60
+  collisionsound: {fileID: 8300000, guid: f8b749e19ca614d4595eeecf5994bc49, type: 3}
 --- !u!114 &-4829633246116887560
 MonoBehaviour:
   m_ObjectHideFlags: 0
