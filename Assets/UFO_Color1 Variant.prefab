@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd290be69de60ec438427e27d8f3cbb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageOnCollsion
-  impactdamage: 10
+  impactdamage: 5
 --- !u!114 &6416179083778249363
 MonoBehaviour:
   m_ObjectHideFlags: 0

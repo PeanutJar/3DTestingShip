@@ -35,6 +35,7 @@ public class DamageOnCollsion : MonoBehaviour
                     {
                         collision.gameObject.GetComponent<AudioPlayer>().PlayAudio(collision.gameObject.GetComponent<Pawn>().getAudio("impactsound"), 1f);
                         collision.gameObject.GetComponent<Health>().ChangeHealthBar(impactdamage, collision.gameObject.GetComponent<Pawn>().gethealthbar(), collision.gameObject.GetComponent<Pawn>().returnHealthScale());
+                        gameObject.GetComponent<UFOScript>().ResetPosition();
                     }
                     collision.gameObject.GetComponent<Health>().TakeDamage(impactdamage);
                 }

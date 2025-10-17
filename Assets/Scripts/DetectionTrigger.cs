@@ -26,7 +26,8 @@ public class DetectionTrigger : MonoBehaviour
             }
             else if (other.gameObject != null && other.gameObject.tag == "Astronaut")
             {
-                //increase score thing
+                GameObject.Find("GameManager").GetComponent<GeneralScript>().score += other.gameObject.GetComponent<AstronautScript>().scoreincreaser;
+                GameObject.Find("GameManager").GetComponent<GeneralScript>().scoretext.text = "Score: " + GameObject.Find("GameManager").GetComponent<GeneralScript>().score;
                 other.gameObject.GetComponent<AudioPlayer>().PlayAudio(other.gameObject.GetComponent<AstronautScript>().getAudio("pickupsound"), 1f);
                 Destroy(other.gameObject);
             }

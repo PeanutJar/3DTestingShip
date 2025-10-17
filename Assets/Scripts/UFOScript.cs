@@ -21,6 +21,7 @@ public class UFOScript : Pawn
     public float rotatespeed;
     [SerializeField] private Image healthbar;
     private Vector3 defaulthealthbarscale;
+    private Vector3 initialspawnpoint;
 
     [Header("AudioClips")]
     public AudioClip collisionsound;
@@ -32,6 +33,7 @@ public class UFOScript : Pawn
         this.gameObject.tag = "Obstacle";
         healthcomponent = GetComponent<Health>();
         defaulthealthbarscale = healthbar.transform.localScale;
+        initialspawnpoint = transform.position;
     }
 
     public void IstantiateControlConnection(AiController parent)
@@ -91,5 +93,10 @@ public class UFOScript : Pawn
 
 
         return collisionsound;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = initialspawnpoint;
     }
 }
