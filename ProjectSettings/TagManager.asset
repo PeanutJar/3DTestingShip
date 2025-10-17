@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boundry
   - Projectile
+  - Obstacle
   layers:
   - Default
   - TransparentFX

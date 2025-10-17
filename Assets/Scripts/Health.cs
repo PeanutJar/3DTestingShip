@@ -17,11 +17,11 @@ public class Health : MonoBehaviour
         
     }
 
-    public void TakeDamage(int _damage, bool _instdeath)
+    public void TakeDamage(int _damage)
     {
         health -= _damage;
         //print("Health:" + health + " " + gameObject.tag);
-        if (health <= 0 || _instdeath)
+        if (health <= 0)
         {
             if(gameObject.tag == "Player")
             {

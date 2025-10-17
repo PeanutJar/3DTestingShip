@@ -10,9 +10,9 @@ public class ControllerPlayer : Controller
         
     }
 
-    public void IstantiatePawnPlayerConnection()
+    public override void IstantiateControlConnection()
     {
-        pawnobject.GetComponentInChildren<PawnSpeeder>().IstantiatePawnPlayerConnection(this);
+        pawnobject.GetComponentInChildren<PawnSpeeder>().IstantiateControlConnection(this);
     }
 
     // Update is called once per frame

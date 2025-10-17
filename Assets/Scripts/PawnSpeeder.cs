@@ -12,9 +12,10 @@ public class PawnSpeeder : Pawn
     {
         rb = GetComponent<Rigidbody>();
         gameObject.tag = "Player";
+        healthcomponent = GetComponent<Health>();
     }
 
-    public void IstantiatePawnPlayerConnection(ControllerPlayer parent)
+    public void IstantiateControlConnection(ControllerPlayer parent)
     {
         pawnparent = parent;
     }

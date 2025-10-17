@@ -19,7 +19,7 @@ public class DeathDestroy : Death
     {
         if(gameObject.tag == "Obstacle")
         {
-            if (gameObject.GetComponent<Obstacle>().healthcomponent.GetHealth() <= 0) //prevents score being added unless player actualy shoots them down
+            if (gameObject.GetComponent<UFOScript>().healthcomponent.GetHealth() <= 0) //prevents score being added unless player actualy shoots them down
             {
                 //Camera.main.GetComponent<GneralScript>().score += gameObject.GetComponent<Obstacle>().scoreincreaser;
                 //Camera.main.GetComponent<GneralScript>().scoretext.text = "Score: " + Camera.main.GetComponent<GneralScript>().score;
@@ -29,6 +29,7 @@ public class DeathDestroy : Death
                 }
                 //Camera.main.GetComponent<GneralScript>().haswon = Camera.main.GetComponent<GneralScript>().GameEnd();
                 //Camera.main.GetComponent<GneralScript>().enemyspawnlist.Remove(gameObject);
+                Destroy(gameObject.GetComponent<UFOScript>().getParent().gameObject);
             }
         }
         else if(gameObject.tag == "Player")

@@ -1,4 +1,8 @@
+using NUnit.Framework.Internal;
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
+using static UnityEditor.PlayerSettings;
 
 public class GeneralScript : MonoBehaviour
 {
@@ -13,6 +17,11 @@ public class GeneralScript : MonoBehaviour
     public GameObject playerpawnprefab;
     public GameObject playercontrollerprefab;
     public GameObject bulletprojectile;
+    public GameObject ufopawnprefab;
+    public GameObject aicontrollerprefab;
+
+    //[Header("Misc")]
+    //private float timecount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,12 +41,13 @@ public class GeneralScript : MonoBehaviour
         }
         SpawnPlayerController();
         SpawnPlayer();
+        //timecount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SpawnPlayer()
@@ -54,7 +64,7 @@ public class GeneralScript : MonoBehaviour
             if (newpawn != null)
             {
                 playerobj.pawnobject = newpawn;
-                playerobj.gameObject.GetComponent<ControllerPlayer>().IstantiatePawnPlayerConnection();
+                playerobj.gameObject.GetComponent<Controller>().IstantiateControlConnection();
             }
         }
 
@@ -74,6 +84,30 @@ public class GeneralScript : MonoBehaviour
             ControllerPlayer newcontroller = _controller.GetComponent<ControllerPlayer>();
             playerobj = newcontroller;
         }
+    }
+
+    public void SpawnUFO()
+    {
+        if (playerobj.pawnobject != null)
+        {
+            GameObject controller = Instantiate(aicontrollerprefab, new Vector3(0, 0, 0), Quaternion.identity, gamelayer.transform) as GameObject; //spawns top left from character
+
+            GameObject obstacle = Instantiate(ufopawnprefab, new Vector3(10, 10, 10), Quaternion.identity, controller.transform) as GameObject; //spawns top left from character
+
+            AiController newcontroller = controller.GetComponent<AiController>();
+            Pawn newpawn = obstacle.GetComponent<Pawn>();
+            if (newpawn != null)
+            {
+                newcontroller.pawnobject = newpawn;
+                newcontroller.gameObject.GetComponent<Controller>().IstantiateControlConnection();
+
+                Vector3 pos = playerobj.pawnobject.gameObject.transform.position;
+                newcontroller.GetComponent<AiController>().setDirection(pos);
+            }
+        }
+
+        
+
     }
 
 }
