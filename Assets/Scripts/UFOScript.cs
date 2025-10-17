@@ -19,6 +19,8 @@ public class UFOScript : Pawn
     public int scoreincreaser;
     public float speed;
     public float rotatespeed;
+    [SerializeField] private Image healthbar;
+    private Vector3 defaulthealthbarscale;
 
     [Header("AudioClips")]
     public AudioClip collisionsound;
@@ -29,8 +31,7 @@ public class UFOScript : Pawn
         rb = GetComponent<Rigidbody>();
         this.gameObject.tag = "Obstacle";
         healthcomponent = GetComponent<Health>();
-        //defaulthealthbarscale = healthbar.transform.localScale;
-        //initalposition = transform.position;
+        defaulthealthbarscale = healthbar.transform.localScale;
     }
 
     public void IstantiateControlConnection(AiController parent)
@@ -61,8 +62,6 @@ public class UFOScript : Pawn
     {
         return obstacleparent;
     }
-
-    /*
     public override Image gethealthbar()
     {
         return (healthbar);
@@ -72,7 +71,7 @@ public class UFOScript : Pawn
     {
         return (defaulthealthbarscale);
     }
-    */
+    
 
     public override AudioClip getAudio(string audiovariablename) //uses "Reflection" technique
     {

@@ -26,6 +26,7 @@ public class GeneralScript : MonoBehaviour
     public GameObject bulletprojectile;
     public GameObject ufopawnprefab;
     public GameObject aicontrollerprefab;
+    public Image heartimage;
 
     [Header("Misc")]
     public int score;
@@ -36,6 +37,14 @@ public class GeneralScript : MonoBehaviour
     public TextMeshProUGUI wintext;
     public bool haswon;
     public int numenemies;
+
+    [Header("AudioClips")] 
+    public AudioClip explosionsound;
+    public AudioClip ufosound;
+    public AudioClip spaceshipimpactsound;
+    public AudioClip projectilesound;
+    public AudioClip backgroundmusic;
+    public AudioClip itemsound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()

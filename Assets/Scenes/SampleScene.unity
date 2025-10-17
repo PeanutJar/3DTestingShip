@@ -428,6 +428,7 @@ MonoBehaviour:
   bulletprojectile: {fileID: 3061471654825953867, guid: 779329b99f326a84492bb5995a05d69e, type: 3}
   ufopawnprefab: {fileID: 309167004388910220, guid: 1eb377fc9d771e94fa42bb5d1383ffcb, type: 3}
   aicontrollerprefab: {fileID: 6639736551426916080, guid: a1618a6655ac1bd41997efcaf1c883dd, type: 3}
+  heartimage: {fileID: 770069436690775126, guid: 106443306536c454d95d921a97e4bff1, type: 3}
   score: 0
   scoretext: {fileID: 515611514}
   highscoretext: {fileID: 1923921729}
@@ -435,6 +436,12 @@ MonoBehaviour:
   wintext: {fileID: 1259710786}
   haswon: 0
   numenemies: 0
+  explosionsound: {fileID: 8300000, guid: f8b749e19ca614d4595eeecf5994bc49, type: 3}
+  ufosound: {fileID: 8300000, guid: be88af8ee75eff24bad8a8c7cba7e970, type: 3}
+  spaceshipimpactsound: {fileID: 8300000, guid: e8b3ff9235edf8b40adfd741153b5362, type: 3}
+  projectilesound: {fileID: 8300000, guid: ac7995b9388c632469561be1281bc20a, type: 3}
+  backgroundmusic: {fileID: 8300000, guid: 4c45f36e9ae1ac74fbda85af99b498cf, type: 3}
+  itemsound: {fileID: 8300000, guid: 04fd193788899644ab15ce69b080254f, type: 3}
 --- !u!1 &213955255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,7 +2115,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 100}
+  m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080478747
 MonoBehaviour:
@@ -2132,10 +2139,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Programmer: Dexter Paclebar
 
-    Models: FlexUnit, Markus Art, KenneyNL
+    Models: FlexUnit, Markus Art, KenneyNL,
+    MR3_2004
 
-    Audio:
-    KenneyNL, JamFX'
+    Audio: KenneyNL, JamFX'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

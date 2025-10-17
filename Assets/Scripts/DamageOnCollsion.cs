@@ -34,7 +34,7 @@ public class DamageOnCollsion : MonoBehaviour
                     if (collision.gameObject.tag == "Player")
                     {
                         collision.gameObject.GetComponent<AudioPlayer>().PlayAudio(collision.gameObject.GetComponent<Pawn>().getAudio("impactsound"), 1f);
-                        //other.gameObject.GetComponent<Health>().ChangeHealthBar(impactdamage, other.gameObject.GetComponent<PawnSpaceShip>().gethealthbar(), other.gameObject.GetComponent<PawnSpaceShip>().returnHealthScale());
+                        collision.gameObject.GetComponent<Health>().ChangeHealthBar(impactdamage, collision.gameObject.GetComponent<Pawn>().gethealthbar(), collision.gameObject.GetComponent<Pawn>().returnHealthScale());
                     }
                     collision.gameObject.GetComponent<Health>().TakeDamage(impactdamage);
                 }
@@ -47,7 +47,7 @@ public class DamageOnCollsion : MonoBehaviour
             {
                 if (collision.gameObject.GetComponent<Health>() != null)
                 {
-                    //other.gameObject.GetComponent<Health>().ChangeHealthBar(impactdamage, other.gameObject.GetComponent<Obstacle>().gethealthbar(), other.gameObject.GetComponent<Obstacle>().returnHealthScale());
+                    collision.gameObject.GetComponent<Health>().ChangeHealthBar(impactdamage, collision.gameObject.GetComponent<Pawn>().gethealthbar(), collision.gameObject.GetComponent<Pawn>().returnHealthScale());
                     collision.gameObject.GetComponent<AudioPlayer>().PlayAudio(collision.gameObject.GetComponent<Pawn>().getAudio("collisionsound"), 1f);
                     collision.gameObject.GetComponent<Health>().TakeDamage(impactdamage);
                 }

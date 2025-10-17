@@ -20,18 +20,17 @@ public class Health : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         health -= _damage;
-        //print("Health:" + health + " " + gameObject.tag);
         if (health <= 0)
         {
             if(gameObject.tag == "Player")
             {
-                //if(gameObject.GetComponent<PawnSpeeder>().IsOutOfLives())
+                if(gameObject.GetComponent<PawnSpeeder>().IsOutOfLives())
                 {
                     Die();
                 }
-                //else
+                else
                 {
-                    //ResetHealthBar(gameObject.GetComponent<PawnSpeeder>().gethealthbar(),gameObject.GetComponent<PawnSpeeder>().returnHealthScale());
+                    ResetHealthBar(gameObject.GetComponent<PawnSpeeder>().gethealthbar(),gameObject.GetComponent<PawnSpeeder>().returnHealthScale());
                 }
             }
             else
@@ -50,7 +49,7 @@ public class Health : MonoBehaviour
         }
         if (gameObject.tag == "Player")
         {
-            //ChangeHealthBar(0, gameObject.GetComponent<Pawn>().gethealthbar(), gameObject.GetComponent<Pawn>().returnHealthScale());
+            ChangeHealthBar(0, gameObject.GetComponent<Pawn>().gethealthbar(), gameObject.GetComponent<Pawn>().returnHealthScale());
         }
         /*
         if ((health + _heal) < maxhealth)

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PawnSpeeder : Pawn
 {
@@ -47,6 +48,26 @@ public class PawnSpeeder : Pawn
 
     }
 
+    public override Image gethealthbar()
+    {
+        return (pawnparent.gethealthbar());
+    }
+
+    public override Vector3 returnHealthScale()
+    {
+        return (pawnparent.returnHealthScale());
+    }
+
+    public int getLives()
+    {
+        return (pawnparent.getLives());
+    }
+
+    public List<Image> getHeartsList()
+    {
+        return (pawnparent.getHeartsList());
+    }
+
     public override AudioClip getAudio(string audiovariablename) //uses "Reflection" technique
     {
         AudioClip localaudio;
@@ -65,5 +86,29 @@ public class PawnSpeeder : Pawn
 
 
         return impactsound;
+    }
+
+    public bool IsOutOfLives() //returns if out of lives, if not reduce lives then check again
+    {
+        if (pawnparent.getLives() <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            pawnparent.setLives(-1);
+            List<Image> _heartslist = pawnparent.getHeartsList();
+            if (_heartslist.Count > 0)
+            {
+                Destroy(_heartslist[_heartslist.Count - 1].gameObject);
+                _heartslist.Remove(_heartslist[_heartslist.Count - 1]);
+                pawnparent.setHeartsList(_heartslist);
+                if (_heartslist.Count <= 0)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
