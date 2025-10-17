@@ -88,7 +88,7 @@ public class GeneralScript : MonoBehaviour
 
     public void SpawnUFO()
     {
-        if (playerobj.pawnobject != null)
+        if (playerobj != null || playerobj.pawnobject != null)
         {
             GameObject controller = Instantiate(aicontrollerprefab, new Vector3(0, 0, 0), Quaternion.identity, gamelayer.transform) as GameObject; //spawns top left from character
 

@@ -43,6 +43,16 @@ public class Health : MonoBehaviour
 
     public void Heal(int _heal)
     {
+        health += _heal;
+        if (health > maxhealth)
+        {
+            health = maxhealth;
+        }
+        if (gameObject.tag == "Player")
+        {
+            //ChangeHealthBar(0, gameObject.GetComponent<Pawn>().gethealthbar(), gameObject.GetComponent<Pawn>().returnHealthScale());
+        }
+        /*
         if ((health + _heal) < maxhealth)
         {
             health += _heal;
@@ -51,6 +61,7 @@ public class Health : MonoBehaviour
         {
             health = maxhealth;
         }
+        */
     }
 
     public void Die()

@@ -11,7 +11,7 @@ public class SpawnerScript : MonoBehaviour
     {
         
     }
-    private void Awake()
+    public void SpawnAwake()
     {
         for (int i = 0; i < spawnnumber; i++)
         {

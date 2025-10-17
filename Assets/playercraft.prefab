@@ -77,6 +77,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e26c9127e6f48854a88fd1ec4fce324f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6357634370529609053}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e26c9127e6f48854a88fd1ec4fce324f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 50964418042523273}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e26c9127e6f48854a88fd1ec4fce324f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3221789022395811500}
   m_SourcePrefab: {fileID: 100100000, guid: e26c9127e6f48854a88fd1ec4fce324f, type: 3}
 --- !u!1 &3716669784556940958 stripped
 GameObject:
@@ -144,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8fb3282e3e460940954bbcdfae37b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PawnSpeeder
+  healthcomponent: {fileID: 0}
   speed: 5
   rotatespeed: 60
 --- !u!114 &6945430627912193319
@@ -197,3 +204,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShooterBullet
   projectile: {fileID: 3061471654825953867, guid: 779329b99f326a84492bb5995a05d69e, type: 3}
+--- !u!65 &50964418042523273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716669784556940958}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9999999, y: 0.79999995, z: 2.1}
+  m_Center: {x: 0, y: 0.39999998, z: 0}
+--- !u!114 &-3221789022395811500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716669784556940958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c052ea84350054c9d98966153b956f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DetectionTrigger
